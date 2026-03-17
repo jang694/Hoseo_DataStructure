@@ -2,50 +2,50 @@
 #include <stdlib.h>
 #include <time.h>
 
-// ÇÔ¼ö ¼±¾ğ
+// í•¨ìˆ˜ ì„ ì–¸
 double calculateAverage(int scores[], int size);
 int getStudentScore(int scores[], int size, int studentNumber);
 void printScore(int scores[], int size, double avr, int option);
 
 int main() {
-    int scores[30]; // 30¸íÀÇ ÇĞ»ı ¼ºÀû ÀúÀå
+    int scores[30]; // 30ëª…ì˜ í•™ìƒ ì„±ì  ì €ì¥
     int studentNumber;
     double average;
     int scoresOption;
 
-    // ³­¼ö »ı¼º ÃÊ±âÈ­
+    // ë‚œìˆ˜ ìƒì„± ì´ˆê¸°í™”
     srand(time(0));
 
-    // ¼ºÀû µ¥ÀÌÅÍ ÃÊ±âÈ­
+    // ì„±ì  ë°ì´í„° ì´ˆê¸°í™”
     for (int i = 0; i < 30; i++) {
-        scores[i] = rand() % 101; // 0 ~ 100 »çÀÌÀÇ ³­¼ö »ı¼º
+        scores[i] = rand() % 101; // 0 ~ 100 ì‚¬ì´ì˜ ë‚œìˆ˜ ìƒì„±
     }
 
-    // Æò±Õ °è»ê
+    // í‰ê·  ê³„ì‚°
     average = calculateAverage(scores, 30);
-    printf("ÇĞ±Ş Æò±Õ Á¡¼ö: %.2f\n", average);
+    printf("í•™ê¸‰ í‰ê·  ì ìˆ˜: %.2f\n", average);
 
-    // Æ¯Á¤ ÇĞ»ı Á¡¼ö °Ë»ö
-    printf("ÇĞ»ı ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä (1 ~ 30): ");
+    // íŠ¹ì • í•™ìƒ ì ìˆ˜ ê²€ìƒ‰
+    printf("í•™ìƒ ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš” (1 ~ 30): ");
     scanf("%d", &studentNumber);
 
     int score = getStudentScore(scores, 30, studentNumber);
     if (score != -1) {
-        printf("%d¹ø ÇĞ»ıÀÇ Á¡¼ö: %d\n", studentNumber, score);
+        printf("%dë²ˆ í•™ìƒì˜ ì ìˆ˜: %d\n", studentNumber, score);
     }
     else {
-        printf("À¯È¿ÇÏÁö ¾ÊÀº ÇĞ»ı ¹øÈ£ÀÔ´Ï´Ù.\n");
+        printf("ìœ íš¨í•˜ì§€ ì•Šì€ í•™ìƒ ë²ˆí˜¸ì…ë‹ˆë‹¤.\n");
     }
     
-    //¿É¼Ç °ª Á¤ÇØ¼­ Ãâ·ÂÇÏ±â(0, 1, 2 ¼¼ °³ÀÇ °ª Áß ÇÏ³ªÀÓ. 0Àº ¸ğµç ÇĞ»ı, 1Àº Æò±Õ ÀÌ»ó ÇĞ»ı, 2´Â Æò±Õ ¹Ì¸¸ ÇĞ»ı)
-    printf("¿É¼Ç °ªÀ» Á¤ÇÏ½Ã¿À(0,1,2)\n(0Àº ¸ğµç ÇĞ»ı, 1Àº Æò±Õ ÀÌ»ó ÇĞ»ı, 2´Â Æò±Õ ¹Ì¸¸ ÇĞ»ı)\n>>");
+    //ì˜µì…˜ ê°’ ì •í•´ì„œ ì¶œë ¥í•˜ê¸°(0, 1, 2 ì„¸ ê°œì˜ ê°’ ì¤‘ í•˜ë‚˜ì„. 0ì€ ëª¨ë“  í•™ìƒ, 1ì€ í‰ê·  ì´ìƒ í•™ìƒ, 2ëŠ” í‰ê·  ë¯¸ë§Œ í•™ìƒ)
+    printf("ì˜µì…˜ ê°’ì„ ì •í•˜ì‹œì˜¤(0,1,2)\n(0ì€ ëª¨ë“  í•™ìƒ, 1ì€ í‰ê·  ì´ìƒ í•™ìƒ, 2ëŠ” í‰ê·  ë¯¸ë§Œ í•™ìƒ)\n>>");
     scanf("%d", &scoresOption);
     printScore(scores, 30, average, scoresOption);
 
     return 0;
 }
 
-// Æò±Õ °è»ê ÇÔ¼ö
+// í‰ê·  ê³„ì‚° í•¨ìˆ˜
 double calculateAverage(int scores[], int size) {
     int sum = 0;
     for (int i = 0; i < size; i++) {
@@ -54,36 +54,36 @@ double calculateAverage(int scores[], int size) {
     return sum / (double)size;
 }
 
-// Æ¯Á¤ ÇĞ»ı Á¡¼ö °Ë»ö ÇÔ¼ö
+// íŠ¹ì • í•™ìƒ ì ìˆ˜ ê²€ìƒ‰ í•¨ìˆ˜
 int getStudentScore(int scores[], int size, int studentNumber) {
     if (studentNumber >= 1 && studentNumber <= size) {
         return scores[studentNumber - 1];
     }
     else {
-        return -1; // À¯È¿ÇÏÁö ¾ÊÀº ÇĞ»ı ¹øÈ£
+        return -1; // ìœ íš¨í•˜ì§€ ì•Šì€ í•™ìƒ ë²ˆí˜¸
     }
 }
 
-//¿É¼ÇÀº Á¤¼öÀÌ¸ç, 0, 1, 2 ¼¼ °³ÀÇ °ª Áß ÇÏ³ªÀÓ. 0Àº ¸ğµç ÇĞ»ı, 1Àº Æò±Õ ÀÌ»ó ÇĞ»ı, 2´Â Æò±Õ ¹Ì¸¸ ÇĞ»ı
+//ì˜µì…˜ì€ ì •ìˆ˜ì´ë©°, 0, 1, 2 ì„¸ ê°œì˜ ê°’ ì¤‘ í•˜ë‚˜ì„. 0ì€ ëª¨ë“  í•™ìƒ, 1ì€ í‰ê·  ì´ìƒ í•™ìƒ, 2ëŠ” í‰ê·  ë¯¸ë§Œ í•™ìƒ
 void printScore(int scores[], int size, double avr, int option) {
     if (option == 0) {
         for (int i = 0; i < size; i++) {
-            printf("%d¹ø ÇĞ»ıÀÇ ¼ºÀû:%d\n", i + 1, scores[i]);
+            printf("%dë²ˆ í•™ìƒì˜ ì„±ì :%d\n", i + 1, scores[i]);
         }
     }
     else if (option == 1) {
-        printf("Æò±Õ ÀÌ»óÀÇ ¼ºÀûÀ» °¡Áø ÇĞ»ıµé\n");
+        printf("í‰ê·  ì´ìƒì˜ ì„±ì ì„ ê°€ì§„ í•™ìƒë“¤\n");
         for (int i = 0; i < size; i++) {
             if (scores[i] >= avr) {
-                printf("%d¹ø ÇĞ»ıÀÇ ¼ºÀû:%d\n", i + 1, scores[i]);
+                printf("%dë²ˆ í•™ìƒì˜ ì„±ì :%d\n", i + 1, scores[i]);
             }
         }
     }
     else if (option == 2) {
-        printf("Æò±Õ ¹Ì¸¸ÀÇ ¼ºÀûÀ» °¡Áø ÇĞ»ıµé\n");
+        printf("í‰ê·  ë¯¸ë§Œì˜ ì„±ì ì„ ê°€ì§„ í•™ìƒë“¤\n");
         for (int i = 0; i < size; i++) {
             if (scores[i] < avr) {
-                printf("%d¹ø ÇĞ»ıÀÇ ¼ºÀû:%d\n", i + 1, scores[i]);
+                printf("%dë²ˆ í•™ìƒì˜ ì„±ì :%d\n", i + 1, scores[i]);
             }
         }
     }
