@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-// ÇÔ¼ö ¼±¾ğ
+// í•¨ìˆ˜ ì„ ì–¸
 double calculateAverage(int scores[], int size);
 int getStudentScore(int scores[], int size, int studentNumber);
 void printScore(int scores[], int size, double avr, int option);
@@ -27,15 +27,15 @@ int main() {
     for (int i = 0; i < size; i++) {
         scores[i] = rand() % 101;
     }
-    printf("ÀÔ·Â ¿Ï·á\n");
+    printf("ì…ë ¥ ì™„ë£Œ\n");
 
     while (1) {
-        printf("---ÇĞ»ı ¼ºÀû °ü¸® ÇÁ·Î±×·¥---\n");
-        printf("1. ÇĞ»ıÁ¤º¸ Ãß°¡\n");
-        printf("2. ÇĞ»ıÁ¤º¸ »èÁ¦\n");
-        printf("3. ÇĞ»ıÁ¤º¸ °Ë»ö\n");
-        printf("4. ÇĞ»ıÁ¤º¸ Ãâ·Â(¿É¼Ç : 0,1,2)\n");
-        printf("5. ÇÁ·Î±×·¥ Á¾·á\n");
+        printf("---í•™ìƒ ì„±ì  ê´€ë¦¬ í”„ë¡œê·¸ë¨---\n");
+        printf("1. í•™ìƒì •ë³´ ì¶”ê°€\n");
+        printf("2. í•™ìƒì •ë³´ ì‚­ì œ\n");
+        printf("3. í•™ìƒì •ë³´ ê²€ìƒ‰\n");
+        printf("4. í•™ìƒì •ë³´ ì¶œë ¥(ì˜µì…˜ : 0,1,2)\n");
+        printf("5. í”„ë¡œê·¸ë¨ ì¢…ë£Œ\n");
         scanf("%d", &choice);
         system("cls");
 
@@ -45,7 +45,7 @@ int main() {
             if (capacity - size <= 5) {
                 capacity += 10;
                 int* newScores = (int*)realloc(scores, capacity * sizeof(int)); //int* newScores = realloc(scores, capacity * sizeof(int));
-                if (!newScores) {                                                 //¿Ö ¾ÈµÇ³ª¿ä?
+                if (!newScores) {                                                 //ì™œ ì•ˆë˜ë‚˜ìš”?
                     printf("allocation error\n");
                     return 1;
                 }
@@ -54,24 +54,24 @@ int main() {
             int newScore = rand() % 101;
             scores[size] = newScore;
             size++;
-            printf("»õ·Î¿î ÇĞ»ı Ãß°¡ : ¹øÈ£ - %d, Á¡¼ö - %d\n", size, newScore);
+            printf("ìƒˆë¡œìš´ í•™ìƒ ì¶”ê°€ : ë²ˆí˜¸ - %d, ì ìˆ˜ - %d\n", size, newScore);
 
             break;
         }
         case 2: //delete
-            printf("»èÁ¦ÇÒ ÇĞ»ı ¹øÈ£ ÀÔ·Â(1~%d):", size);
+            printf("ì‚­ì œí•  í•™ìƒ ë²ˆí˜¸ ì…ë ¥(1~%d):", size);
             scanf("%d", &studentNumber);
             deleteStudent(scores, size, studentNumber);
             break;
         case 3:
-            printf("°Ë»öÇÒ ÇĞ»ı ¹øÈ£ ÀÔ·Â(1~%d):", size);
+            printf("ê²€ìƒ‰í•  í•™ìƒ ë²ˆí˜¸ ì…ë ¥(1~%d):", size);
             scanf("%d", &studentNumber);
             score = getStudentScore(scores, size, studentNumber);
             if (score != -1) {
-                printf("%d¹ø ÇĞ»ı Á¡¼ö: %d\n", studentNumber, score);
+                printf("%dë²ˆ í•™ìƒ ì ìˆ˜: %d\n", studentNumber, score);
             }
             else {
-                printf("ÇØ´ç ÇĞ»ıÀº ¾ø´Â ÇĞ»ıÀÔ´Ï´Ù.\n");
+                printf("í•´ë‹¹ í•™ìƒì€ ì—†ëŠ” í•™ìƒì…ë‹ˆë‹¤.\n");
             }
             break;
         case 4:
@@ -83,7 +83,7 @@ int main() {
             free(scores);
             break;
         default:
-            printf("Àß¸øµÈ ÀÔ·Â\n");
+            printf("ì˜ëª»ëœ ì…ë ¥\n");
             break;
         }
     }
@@ -91,12 +91,12 @@ int main() {
     return 0;
 }
 
-// Æò±Õ °è»ê ÇÔ¼ö
+// í‰ê·  ê³„ì‚° í•¨ìˆ˜
 double calculateAverage(int scores[], int size) {
     int sum = 0;
-    int count = 0; // ½ÇÁ¦ Á¡¼ö°¡ ÀÖ´Â ÇĞ»ı ¼ö
+    int count = 0; // ì‹¤ì œ ì ìˆ˜ê°€ ìˆëŠ” í•™ìƒ ìˆ˜
     for (int i = 0; i < size; i++) {
-        if (scores[i] != -1) { // [Ãß°¡] »èÁ¦µÈ ÇĞ»ıÀº °è»ê ¾È ÇÔ
+        if (scores[i] != -1) { // [ì¶”ê°€] ì‚­ì œëœ í•™ìƒì€ ê³„ì‚° ì•ˆ í•¨
             sum += scores[i];
             count++;
         }
@@ -105,37 +105,37 @@ double calculateAverage(int scores[], int size) {
     return sum / (double)count;
 }
 
-// Æ¯Á¤ ÇĞ»ı Á¡¼ö °Ë»ö ÇÔ¼ö
+// íŠ¹ì • í•™ìƒ ì ìˆ˜ ê²€ìƒ‰ í•¨ìˆ˜
 int getStudentScore(int scores[], int size, int studentNumber) {
     if (studentNumber >= 1 && studentNumber <= size) {
-        if (scores[studentNumber - 1] == -1) return -1; // [Ãß°¡] »èÁ¦µÈ ÇĞ»ıÀÌ¸é -1 ¹İÈ¯
+        if (scores[studentNumber - 1] == -1) return -1; // [ì¶”ê°€] ì‚­ì œëœ í•™ìƒì´ë©´ -1 ë°˜í™˜
         return scores[studentNumber - 1];
     }
     return -1;
 }
 
-//¿É¼ÇÀº Á¤¼öÀÌ¸ç, 0, 1, 2 ¼¼ °³ÀÇ °ª Áß ÇÏ³ªÀÓ. 0Àº ¸ğµç ÇĞ»ı, 1Àº Æò±Õ ÀÌ»ó ÇĞ»ı, 2´Â Æò±Õ ¹Ì¸¸ ÇĞ»ı
+//ì˜µì…˜ì€ ì •ìˆ˜ì´ë©°, 0, 1, 2 ì„¸ ê°œì˜ ê°’ ì¤‘ í•˜ë‚˜ì„. 0ì€ ëª¨ë“  í•™ìƒ, 1ì€ í‰ê·  ì´ìƒ í•™ìƒ, 2ëŠ” í‰ê·  ë¯¸ë§Œ í•™ìƒ
 void printScore(int scores[], int size, double avr, int option) {
     if (option == 0) {
         for (int i = 0; i < size; i++) {
-            printf("%d¹ø ÇĞ»ıÀÇ ¼ºÀû:%d\n", i + 1, scores[i]);
+            printf("%dë²ˆ í•™ìƒì˜ ì„±ì :%d\n", i + 1, scores[i]);
         }
     }
     else if (option == 1) {
-        printf("Æò±Õ ÀÌ»óÀÇ ¼ºÀûÀ» °¡Áø ÇĞ»ıµé\n");
+        printf("í‰ê·  ì´ìƒì˜ ì„±ì ì„ ê°€ì§„ í•™ìƒë“¤\n");
         for (int i = 0; i < size; i++) {
             if (scores[i] == -1) continue;
             if (scores[i] >= avr) {
-                printf("%d¹ø ÇĞ»ıÀÇ ¼ºÀû:%d\n", i + 1, scores[i]);
+                printf("%dë²ˆ í•™ìƒì˜ ì„±ì :%d\n", i + 1, scores[i]);
             }
             
         }
     }
     else if (option == 2) {
-        printf("Æò±Õ ¹Ì¸¸ÀÇ ¼ºÀûÀ» °¡Áø ÇĞ»ıµé\n");
+        printf("í‰ê·  ë¯¸ë§Œì˜ ì„±ì ì„ ê°€ì§„ í•™ìƒë“¤\n");
         for (int i = 0; i < size; i++) {
             if (scores[i] < avr) {
-                printf("%d¹ø ÇĞ»ıÀÇ ¼ºÀû:%d\n", i + 1, scores[i]);
+                printf("%dë²ˆ í•™ìƒì˜ ì„±ì :%d\n", i + 1, scores[i]);
             }
         }
     }
@@ -143,13 +143,13 @@ void printScore(int scores[], int size, double avr, int option) {
 
 void deleteStudent(int* scores, int size, int studentNumber) {
     if (studentNumber < 1 || studentNumber > size) {
-        printf("ÇĞ»ı ¹øÈ£ ¿À·ù\n");
+        printf("í•™ìƒ ë²ˆí˜¸ ì˜¤ë¥˜\n");
     }
     if (scores[studentNumber - 1] == -1) {
-        printf("»èÁ¦µÈ ÇĞ»ıÀÔ´Ï´Ù.\n");
+        printf("ì‚­ì œëœ í•™ìƒì…ë‹ˆë‹¤.\n");
     }
     else {
         scores[studentNumber - 1] = -1;
-        printf("%d ÇĞ»ı »èÁ¦ ¿Ï·á\n",studentNumber);
+        printf("%d í•™ìƒ ì‚­ì œ ì™„ë£Œ\n",studentNumber);
     }
 }
